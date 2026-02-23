@@ -1,0 +1,12 @@
+# Backend configuration file for partial backend configuration
+# Usage: terraform init -backend-config=backend-config.hcl
+#
+# This allows you to keep sensitive or environment-specific values
+# out of your version-controlled Terraform code
+
+bucket         = "469240347599-terraform-states-prod"
+key            = "ecr/terraform.tfstate"
+region         = "eu-west-1"
+encrypt        = true
+dynamodb_table = "terraform-state-lock-prod"
+
