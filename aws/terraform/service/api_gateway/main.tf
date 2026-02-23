@@ -29,9 +29,6 @@ resource "aws_api_gateway_stage" "this" {
   stage_name           = var.stage_name
   xray_tracing_enabled = var.xray_tracing_enabled
 
-  default_route_settings {
-  }
-
   access_log_settings {
     destination_arn = aws_cloudwatch_log_group.this.arn
   }
