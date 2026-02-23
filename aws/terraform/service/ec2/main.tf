@@ -25,6 +25,6 @@ resource "aws_instance" "this" {
   tags = merge(var.tags, { Name = var.name })
 
   lifecycle {
-    ignore_changes = [ami_id]
+    ignore_changes = [ami]
   }
 }

@@ -21,13 +21,10 @@ resource "aws_sqs_queue" "this" {
   receive_wait_time_seconds         = var.receive_wait_time_seconds
   kms_master_key_id                 = local.kms_master_key_id
 
-  dynamic "redrive_policy" {
-    for_each = var.create_dlq ? [1] : []
-    content {
-      deadLetterTargetArn = aws_sqs_queue.dlq[0].arn
-      maxReceiveCount     = var.dlq_max_receive_count
-    }
-  }
+  redrive_policy = var.create_dlq ? jsonencode({
+    deadLetterTargetArn = aws_sqs_queue.dlq[0].arn
+    maxReceiveCount     = var.dlq_max_receive_count
+  }) : null
 
   tags = merge(var.tags, { Name = local.queue_name })
 }
