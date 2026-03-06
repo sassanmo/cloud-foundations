@@ -1,4 +1,4 @@
-# Clound Foundations
+# Cloud Foundations
 
 A collection of reusable, best-practice Terraform modules (e.g. for AWS) organized for scalability and maintainability.
 
